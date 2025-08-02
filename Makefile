@@ -127,6 +127,7 @@ tx_force_pull_translations:
 	tx pull -f --parallel --mode onlytranslated -l $(subst $(space),$(comma),$(subst en$(space),,$(subst zh_,zh-,$(LANGUAGES)))) ;
 
 doctest-gh:
+	ulimit -c unlimited && \
 	export PYTHONPATH=$(PYTHONPATH):/usr/lib/python3/dist-packages && \
 	. /docsenv/bin/activate --system-site-packages && \
 	gdb --batch --ex "run" --ex "bt" --args python3 /docsenv/bin/sphinx-build -b doctest . build/doctest
