@@ -129,7 +129,7 @@ tx_force_pull_translations:
 doctest-gh:
 	export PYTHONPATH=$(PYTHONPATH):/usr/lib/python3/dist-packages && \
 	. /docsenv/bin/activate --system-site-packages && \
-	gdb --batch --ex "run" --ex "bt" --args $(SPHINXBUILD) -b doctest . $(BUILDDIR)/doctest
+	gdb --batch --ex "run" --ex "bt" --args python3 /docsenv/bin/sphinx-build -b doctest . build/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	       "results in $(BUILDDIR)/doctest/output.txt."
 
