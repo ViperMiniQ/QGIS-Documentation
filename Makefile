@@ -132,6 +132,7 @@ doctest-gh:
     gdb --batch --ex "run" --ex "bt" --args $(SPHINXBUILD) -b doctest . $(BUILDDIR)/doctest
     @echo "Testing of doctests in the sources finished, look at the " \
           "results in $(BUILDDIR)/doctest/output.txt."
+
 doctest:
 	LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so $(SPHINXBUILD) -b doctest . $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
