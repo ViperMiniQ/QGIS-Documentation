@@ -135,11 +135,11 @@ doctest-gh:
 	      "results in $(BUILDDIR)/doctest/output.txt."
 
 doctest:
-	gdb --args $(SPHINXBUILD) -b doctest . $(BUILDDIR)/doctest
+	gdb --args python3 $(SPHINXBUILD) -b doctest . $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
 
 linkcheck:
-	$(SPHINXBUILD) -b linkcheck $(SOURCEDIR) $(BUILDDIR)/linkcheck
+	gdb --args python3 $(SPHINXBUILD) -b linkcheck . $(BUILDDIR)/linkcheck
 	@echo "Check finished. Report is in $(BUILDDIR)/linkcheck/output.txt."
 
