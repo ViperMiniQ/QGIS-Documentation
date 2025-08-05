@@ -140,7 +140,7 @@ layers for the canvas.
 
   # remove vlayer to prevent seg fault
   QgsProject.instance().removeMapLayer(vlayer)
-  del vlayer
+  # del vlayer
 
 After executing these commands, the canvas should show the layer you have
 loaded.
