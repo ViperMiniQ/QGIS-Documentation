@@ -128,7 +128,6 @@ tx_force_pull_translations:
 
 doctest-gh:
 	ulimit -c unlimited && \
-	# --system-site-packages needed to keep QGIS libs in python path
 	export PYTHONPATH=$(PYTHONPATH):/usr/lib/python3/dist-packages && \
 	. /docsenv/bin/activate --system-site-packages && LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so $(SPHINXBUILD) -b doctest . $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
