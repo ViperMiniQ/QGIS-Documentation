@@ -274,3 +274,12 @@ Expression-related errors can occur during expression parsing or evaluation:
    value = exp.evaluate()
    if exp.hasEvalError():
       raise ValueError(exp.evalErrorString())
+
+.. testcleanup:: expr
+
+   # remove vl to prevent seg fault
+   QgsProject.instance().removeMapLayer(layer)
+   del layer
+   QgsProject.instance().removeMapLayer(vl)
+   del vl
+   

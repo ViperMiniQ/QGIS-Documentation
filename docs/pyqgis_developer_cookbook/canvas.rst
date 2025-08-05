@@ -471,3 +471,10 @@ Here is an example of a custom canvas item that draws a circle:
   item = CircleCanvasItem(iface.mapCanvas())
   item.setCenter(QgsPointXY(200,200))
   item.setSize(80)
+
+.. testcleanup:: canvas
+
+    # remove vlayer to prevent seg fault
+    QgsProject.instance().removeMapLayer(vlayer)
+    del vlayer
+    

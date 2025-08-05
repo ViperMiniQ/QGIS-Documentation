@@ -249,8 +249,8 @@ providers:
       provider_options.transformContext = QgsProject.instance().transformContext()
       vlayer.setDataSource(uri, "layer name you like", "WFS", provider_options)
 
-      del(vlayer)
-
+      QgsProject.instance().removeMapLayer(vlayer)
+      del vlayer
 
 .. index::
   pair: Raster layers; Loading

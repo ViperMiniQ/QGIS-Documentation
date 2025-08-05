@@ -433,6 +433,7 @@ Otherwise
 .. testcode:: cheat_sheet
 
     QgsProject.instance().removeAllMapLayers()
+    del layer
 
 **Remove all**
 
