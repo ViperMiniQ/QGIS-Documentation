@@ -493,7 +493,44 @@ def dump_tree(root):
 '''
 doctest_test_doctest_blocks = ''
 
-doctest_global_cleanup = ''
+doctest_global_cleanup = doctest_global_cleanup = '''
+# Proper QGIS shutdown sequence to prevent segfaults
+import gc
+import sys
+
+def cleanup_qgis():
+    try:
+        from qgis.core import QgsProject, QgsApplication
+        QgsProject.instance().clear()
+        
+        QgsProject.instance().removeAllMapLayers()
+    
+        gc.collect()
+        
+        # Properly exit the QgsApplication
+        if 'QGISAPP' in globals() and globals()['QGISAPP'] is not None:
+            app = globals()['QGISAPP']
+            
+            # Clean shutdown sequence
+            app.processEvents()  # Process any pending events
+            
+            # Exit the application properly
+            if hasattr(app, 'exitQgis'):
+                app.exitQgis()
+            
+            app.quit()
+            
+            globals()['QGISAPP'] = None
+        
+        gc.collect()
+        
+    except Exception as e:
+        print(f"Warning: Error during QGIS cleanup: {e}", file=sys.stderr)
+        import traceback
+        traceback.print_exc(file=sys.stderr)
+
+cleanup_qgis()
+'''
 
 # Make Sphinx doctest insensitive to object address differences,
 # also 'output_....' processing alg ids
