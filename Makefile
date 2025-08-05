@@ -127,6 +127,7 @@ tx_force_pull_translations:
 	tx pull -f --parallel --mode onlytranslated -l $(subst $(space),$(comma),$(subst en$(space),,$(subst zh_,zh-,$(LANGUAGES)))) ;
 
 doctest-gh:
+	ulimit -c unlimited && \
 	# --system-site-packages needed to keep QGIS libs in python path
 	export PYTHONPATH=$(PYTHONPATH):/usr/lib/python3/dist-packages && \
 	. /docsenv/bin/activate --system-site-packages && LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so $(SPHINXBUILD) -b doctest . $(BUILDDIR)/doctest
