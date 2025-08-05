@@ -129,7 +129,8 @@ tx_force_pull_translations:
 doctest-gh:
 	ulimit -c unlimited && \
 	export PYTHONPATH=$(PYTHONPATH):/usr/lib/python3/dist-packages && \
-	. /docsenv/bin/activate --system-site-packages && LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so $(SPHINXBUILD) -b doctest . $(BUILDDIR)/doctest
+	. /docsenv/bin/activate --system-site-packages && \
+	gdb --batch --ex "run" --ex "bt" --args python3 /docsenv/bin/sphinx-build -b doctest . build/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
 
