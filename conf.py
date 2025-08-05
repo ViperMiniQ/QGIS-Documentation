@@ -417,6 +417,7 @@ from qgis.testing.mocked import get_iface
 from qgis.PyQt.QtCore import QSettings
 settings = QSettings()
 settings.setValue("cache/directory", "testdata")
+settings.setValue("/qgis/walForSqlite3", False)
 
 
 def start_qgis():
