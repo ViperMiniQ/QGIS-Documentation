@@ -250,7 +250,7 @@ providers:
       vlayer.setDataSource(uri, "layer name you like", "WFS", provider_options)
 
       QgsProject.instance().removeMapLayer(vlayer)
-
+      del vlayer
 
 .. index::
   pair: Raster layers; Loading

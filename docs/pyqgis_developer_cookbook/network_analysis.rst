@@ -562,3 +562,9 @@ Here is an example:
         rb.addPoint(QgsPointXY(centerPoint.x() + delta, centerPoint.y() - delta))
         rb.addPoint(QgsPointXY(centerPoint.x() + delta, centerPoint.y() + delta))
         rb.addPoint(QgsPointXY(centerPoint.x() - delta, centerPoint.y() + delta))
+
+.. testcleanup:: network_analysis
+
+  # remove the layer to prevent seg fault
+  QgsProject.instance().removeMapLayer(vectorLayer)
+  del vectorLayer

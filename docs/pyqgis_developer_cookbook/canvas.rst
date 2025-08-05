@@ -136,12 +136,6 @@ layers for the canvas.
   # set the map canvas layer set
   canvas.setLayers([vlayer])
 
-.. testcleanup:: canvas
-
-  # remove vlayer to prevent seg fault
-  QgsProject.instance().removeMapLayer(vlayer)
-  # del vlayer
-
 After executing these commands, the canvas should show the layer you have
 loaded.
 
@@ -477,3 +471,10 @@ Here is an example of a custom canvas item that draws a circle:
   item = CircleCanvasItem(iface.mapCanvas())
   item.setCenter(QgsPointXY(200,200))
   item.setSize(80)
+
+.. testcleanup:: canvas
+
+    # remove vlayer to prevent seg fault
+    QgsProject.instance().removeMapLayer(vlayer)
+    del vlayer
+    

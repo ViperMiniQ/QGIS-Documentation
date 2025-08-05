@@ -1692,3 +1692,10 @@ Further Topics
 
 
 .. _supported formats by OGR: https://gdal.org/en/latest/drivers/vector/index.html
+
+.. testcleaup:: vectors
+
+  # remove vlayer to prevent seg fault
+  QgsProject.instance().removeMapLayer(vlayer)
+  del vlayer
+  
