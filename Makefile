@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 LANG            = en
 # currently we are building for the following languages, if you want yours to be build: ask!
-LANGUAGES       = en # cs de es fr hu it ja ko lt nl pl pt_BR pt_PT ro ru sv zh_Hans
+LANGUAGES       = en # cs de es fr hu it ja ko lt nl pl pt_BR pt_PT ro ru zh_Hans
 SPHINXOPTS      =
 # Use the tag i18n to filter text based on whether we are translating or not
 SPHINXINTLOPTS  = $(SPHINXOPTS) -D language=$(LANG) -t i18n
@@ -129,17 +129,16 @@ tx_force_pull_translations:
 doctest-gh:
 	# --system-site-packages needed to keep QGIS libs in python path
 	export PYTHONPATH=$(PYTHONPATH):/usr/lib/python3/dist-packages && \
-	. /docsenv/bin/activate --system-site-packages && \
-	gdb --args $(SPHINXBUILD) -b doctest . $(BUILDDIR)/doctest
+	. /docsenv/bin/activate --system-site-packages && $(SPHINXBUILD) -b doctest . $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
 
 doctest:
-	gdb --args python3 $(SPHINXBUILD) -b doctest . $(BUILDDIR)/doctest
+	$(SPHINXBUILD) -b doctest . $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
 
 linkcheck:
-	gdb --args python3 $(SPHINXBUILD) -b linkcheck . $(BUILDDIR)/linkcheck
+	$(SPHINXBUILD) -b linkcheck $(SOURCEDIR) $(BUILDDIR)/linkcheck
 	@echo "Check finished. Report is in $(BUILDDIR)/linkcheck/output.txt."
 
